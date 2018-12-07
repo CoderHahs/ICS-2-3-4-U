@@ -1,0 +1,277 @@
+import java.applet.*;
+import java.awt.*;
+import javax.swing.*;
+
+public class firstgame
+{
+    public static void main (String args[])
+    {
+ new firstgame ();
+    }
+
+
+    public firstgame ()
+    {
+ char a = ' ';
+ char b = ' ';
+ char c = ' ';
+ char d = ' ';
+ char e = ' ';
+ char f = ' ';
+ char g = ' ';
+ char h = ' ';
+ char i = ' ';
+ char j = ' ';
+ char k = ' ';
+ char l = ' ';
+ char m = ' ';
+ char n = ' ';
+ char o = ' ';
+ char p = ' ';
+ char q = ' ';
+ char r = ' ';
+ char s = ' ';
+ char t = ' ';
+ char u = ' ';
+ char v = ' ';
+ char w = ' ';
+ char x = ' ';
+ char y = ' ';
+ char ans = ' ';
+ char ans1 = ' ';
+ int lives = 3;
+ int ac = 0;
+ int qc = 0;
+ char point = ' ';
+
+
+
+ for (int i1 = 1 ; i1 < 11 ; i1++)
+ {
+     double z = 1;
+     ans1 = returnansupper (ans1);
+     ans = returnanslower (ans);
+     //(Math.random () * 10) + 1;
+     try
+     {
+  Thread.sleep (500);
+     }
+     catch (InterruptedException ex)
+     {
+     }
+     printplainboardwithscore (ac, qc, z, lives);
+     try
+     {
+  Thread.sleep (1500);
+     }
+     catch (InterruptedException ex)
+     {
+     }
+     printboardwithinput (z, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, ans, i1);
+     try
+     {
+  Thread.sleep (3500);
+     }
+     catch (InterruptedException ex)
+     {
+     }
+
+     printplainboard ();
+
+     char guess = ' ';
+
+     guess = IBIO.inputChar ("The missile is launched from Point B. Which Point will the missile hit? ");
+
+     while (guess != 'a' && guess != 'A' && guess != 'b' && guess != 'B' && guess != 'c' && guess != 'C' && guess != 'd' && guess != 'D' && guess != 'e' && guess != 'E' && guess != 'f' && guess != 'F' && guess != 'g' && guess != 'G' && guess != 'h' && guess != 'H' && guess != 'i' && guess != 'I' && guess != 'j' && guess != 'J' && guess != 'k' && guess != 'K' && guess != 'l' && guess != 'L' && guess != 'm' && guess != 'M' && guess != 'n' && guess != 'N' && guess != 'o' && guess != 'O' && guess != 'p' && guess != 'P' && guess != 'q' && guess != 'Q' && guess != 'r' && guess != 'R' && guess != 's' && guess != 'S' && guess != 't' && guess != 'T')
+     {
+  System.out.println ("\nNot a Point. Try again.");
+  guess = IBIO.inputChar ("If the missile is launched from Point " + point + ", which Point will the missile hit? ");
+     }
+
+     if (guess == ans || guess == ans1)
+     {
+  ac++;
+  System.out.println ("Correct!");
+     }
+     else
+     {
+  System.out.println ("Wrong.");
+  lives--;
+     }
+
+     if (lives == 0)
+     {
+  i1 = 11;
+  System.out.println ("Game Over");
+     }
+
+
+     qc++;
+     z++;
+ }
+
+
+    }
+
+
+    public char printboardwithinput (double x, char a, char b, char c, char d, char e, char f, char g, char h, char i, char j, char k, char l, char m, char n, char o, char p, char q, char r, char s, char t, char u, char v, char w, char z, char y, char ans, int i1)
+    {
+ if (x == 1)
+ {
+     j = '\\';
+     h = '/';
+     l = '\\';
+     o = '/';
+     ans = 'r';
+ }
+ JOptionPane jopt = new JOptionPane ();
+ String result;
+ result = "* *   * Level " + i1 + " *    * * \n \n"
+     + "     A     B     C     D     E   \n"
+     + "  |     |     |     |     |     |    \n"
+     + "F |  " + a + "  |  " + b + "  |  " + c + "  |  " + d + "  |  " + e + "  | G  \n"
+     + "  |     |     |     |     |     |    \n"
+     + "-------------------------------------\n"
+     + "  |     |     |     |     |     |    \n"
+     + "H |  " + f + "  |  " + g + "  |  " + h + "  |  " + i + "  |  " + j + "  | I  \n"
+     + "  |     |     |     |     |     |    \n"
+     + "-------------------------------------\n"
+     + "  |     |     |     |     |     |    \n"
+     + "J |  " + k + "  |  " + l + "  |  " + m + "  |  " + n + "  |  " + o + "  | K  \n"
+     + "  |     |     |     |     |     |    \n"
+     + "-------------------------------------\n"
+     + "  |     |     |     |     |     |    \n"
+     + "L |  " + p + "  |  " + q + "  |  " + r + "  |  " + s + "  |  " + t + "  | M  \n"
+     + "  |     |     |     |     |     |    \n"
+     + "-------------------------------------\n"
+     + "  |     |     |     |     |     |    \n"
+     + "N |  " + u + "  |  " + v + "  |  " + w + "  |  " + z + "  |  " + y + "  | O  \n"
+     + "  |     |     |     |     |     |    \n"
+     + "     P     Q     R     S     T    \n"
+     + "  Remember the arrangement of bars\n"
+     + "\n";
+ /*JTextArea resLabel = new JTextArea (result);
+ resLabel.setFont (new Font ("Courier", Font.PLAIN, 12));
+ //jopt.setFont(new Font("Monospaced", Font.BOLD, 50));
+ jopt.showMessageDialog (null, resLabel, "Results", JOptionPane.PLAIN_MESSAGE);*/
+
+
+
+ return ans;
+    }
+
+
+    public char returnansupper (char ans)
+    {
+ for (int x = 1 ; x < 11 ; x++)
+ {
+     if (x == 1)
+     {
+  ans = 'R';
+     }
+ }
+ return ans;
+    }
+
+
+    public char returnanslower (char ans)
+    {
+ for (int x = 1 ; x < 11 ; x++)
+ {
+     if (x == 1)
+     {
+  ans = 'r';
+     }
+ }
+ return ans;
+    }
+
+
+    public void printplainboardwithscore (int acounter, int qcounter, double z, int lives)
+    {
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("     A     B     C     D     E   ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("F |     |     |     |     |     | G  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("H |     |     |     |     |     | I  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("J |     |     |     |     |     | K  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("L |     |     |     |     |     | M  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("N |     |     |     |     |     | O  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("     P     Q     R     S     T   ");
+ if (z == 1)
+ {
+     System.out.println (" Number of lives: " + lives);
+     System.out.println (" You have " + acounter + " of " + qcounter + " question correct.");
+ }
+ else
+ {
+     System.out.println (" Number of lives remaining: " + lives);
+     System.out.println (" You have " + acounter + " of " + qcounter + " questions correct.");
+ }
+       
+
+    }
+
+
+    public void printplainboard ()
+    {
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("     A     B     C     D     E   ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("F |     |     |     |     |     | G  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("H |     |     |     |     |     | I  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("J |     |     |     |     |     | K  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("L |     |     |     |     |     | M  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("-------------------------------------");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("N |     |     |     |     |     | O  ");
+ System.out.println ("  |     |     |     |     |     |    ");
+ System.out.println ("     P     Q     R     S     T   ");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+ System.out.println ("");
+    }
+}
+
+
+
+

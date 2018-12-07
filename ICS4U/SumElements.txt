@@ -1,0 +1,252 @@
+/*
+ By Hrithik Shah
+ Date: August 8, 2016
+ Title: Sum Elements Program
+ Purpose: adding elements to arrays
+ */
+
+import java.util.Scanner; // imports scanner
+import java.util.ArrayList; // imports ArrayList
+import java.util.*;
+
+public class SumElements
+{
+  
+  public static void main (String[] args)
+  {
+    new SumElements ();
+  }
+  
+  // Scanner
+  Scanner scan = new Scanner (System.in);
+  
+  // ArrayList containing all inputted integers
+  ArrayList<Integer> integers = new ArrayList <Integer>();
+  
+  
+  public SumElements ()
+  {
+    char end = 'n';
+    
+    while (end == 'n')
+    {
+      System.out.println ("What would you like to do? \n1. Add an additional integer \n2. Remove an integers \n3. Compute the sum of all the integers \n4. Compute the sum of the even integers \n5. Compute the sum of the odd integers \n6. Exit \nEnter a number 1-6: ");
+      int option = 0;
+      // error handling
+      if (scan.hasNextInt ())
+      {
+        option = scan.nextInt ();
+        while (option < 1 || option > 6)
+        {
+          System.out.println ("\nThere was an error. Please try again. \nEnter a number 1-6:");
+          option = scan.nextInt ();
+        }
+      }
+      else
+      {
+        while (!scan.hasNextInt())
+        {
+          System.out.println("Invalid entry. Please enter a number 1-6:.");
+          scan.next();
+        }
+        option = scan.nextInt ();
+        while (option < 1 || option > 6)
+        {
+          System.out.println ("\nThere was an error. Please try again. \nEnter a number 1-6:");
+          option = scan.nextInt ();
+        }
+      }
+      
+      if (option == 1)
+      {
+        System.out.println (""); // space out text
+        addInteger (); 
+        System.out.println ("");
+      }
+      else if (option == 2)
+      {
+        System.out.println ("");
+        removeInteger ();
+        System.out.println ("");
+      }
+      else if (option == 3)
+      {
+        System.out.println ("");
+        sumAll ();
+        System.out.println ("");
+      }
+      else if (option == 4)
+      {
+        System.out.println ("");
+        sumEven ();
+        System.out.println ("");
+      }
+      else if (option == 5)
+      {
+        System.out.println ("");
+        sumOdd ();
+        System.out.println ("");
+      }
+      else
+      {
+        // Exit the program
+        System.out.println ("\nGoodbye!");
+        end = 'y';
+      } 
+    }
+  }
+  
+  public void addInteger ()
+  {
+    System.out.println ("Enter an integer: ");
+    int toadd = 0;
+    // error handling
+    if (scan.hasNextInt ())
+    {
+      toadd = scan.nextInt ();
+    }
+    else
+    {
+      while (!scan.hasNextInt())
+      {
+        System.out.println("Invalid entry. Please enter an integer.");
+        scan.next();
+      }
+      toadd = scan.nextInt ();
+    }
+    
+    integers.add (toadd); // add to arraylist
+    
+    System.out.println ("List: "); // integer list will come after
+    
+    // display all intgers
+    for (int i = 0; i < integers.size (); i++)
+    {
+      System.out.println (integers.get (i)); 
+    }
+    
+  }
+  
+  public void removeInteger ()
+  {
+    System.out.println ("List: "); // integer list will come after
+    
+    // display all integers
+    for (int i = 0; i < integers.size (); i++)
+    {
+      System.out.println (integers.get (i)); 
+    }
+    
+    System.out.println ("Please enter the integer to remove: ");
+    int toremove = 0;
+    // error handling
+    if (scan.hasNextInt ())
+    {
+      toremove = scan.nextInt ();
+    }
+    else
+    {
+      while (!scan.hasNextInt())
+      {
+        System.out.println("Invalid entry. Please enter an integer in the list.");
+        scan.next();
+      }
+      toremove = scan.nextInt ();
+    }
+    
+    if (integers.contains (toremove))
+    {
+      integers.remove(new Integer(toremove));
+      System.out.println ("Integer was removed");
+    }
+    else
+    {
+      while (!integers.contains(toremove))
+      {         
+        System.out.println ("Sorry there was an error with input. \nMake sure the integer is in the list. \nEnter the integer: ");
+        if (scan.hasNextInt ())
+        {
+          toremove = scan.nextInt ();
+        }
+        else
+        {
+          while (!scan.hasNextInt())
+          {
+            System.out.println("Invalid entry. Please enter an integer in the list.");
+            scan.next();
+          }
+          toremove = scan.nextInt ();
+        }
+      }
+      integers.remove (new Integer(toremove));
+      System.out.println ("Integer was removed");
+    }
+    
+  }
+  
+  public void sumAll ()
+  {
+    int sum = 0; // contains total
+    int adding = 0; // number to add
+    
+    System.out.println ("List: "); // integer list will come after
+    
+    for (int i = 0; i < integers.size (); i++)
+    {
+      adding = integers.get (i);
+      sum += adding;
+      System.out.println (integers.get (i)); 
+    }
+    
+    System.out.println ("The sum of all the integers is: " + sum);
+    
+  }
+  
+  public void sumEven ()
+  {
+    int sumeven = 0; // contains total
+    int addinge = 0; // number to add
+    int tempe = 0; // used to check if number is even
+    
+    System.out.println ("List: "); // integer list will come after
+    
+    for (int i = 0; i < integers.size (); i++)
+    {
+      tempe = integers.get (i);
+      if (tempe % 2 == 0)
+      {
+        addinge = integers.get (i);
+        sumeven += addinge;
+        System.out.println (integers.get (i)); 
+      }
+    }
+    
+    System.out.println ("The sum of all even integers is: " + sumeven);
+  }
+  
+  public void sumOdd ()
+  {
+    int sumodd = 0; // contains total
+    int addingo = 0; // number to add
+    int tempo = 0; // used to check if number is odd
+    
+    System.out.println ("List: "); // integer list will come after
+        
+    for (int i = 0; i < integers.size (); i++)
+    {
+      tempo = integers.get (i);
+      if (tempo % 2 == 1)
+      {
+        addingo = integers.get (i);
+        sumodd += addingo;
+        System.out.println (integers.get (i)); 
+      }
+      
+    }
+    
+    System.out.println ("The sum of all odd integers is: " + sumodd);
+    
+  }
+  
+}
+

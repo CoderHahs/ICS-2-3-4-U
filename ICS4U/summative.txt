@@ -1,0 +1,46 @@
+/*
+ By Hrithik Shah
+ Date: August 5, 2016
+ Title: Summative Evaluation
+ Purpose: Exponents
+ */
+
+import java.util.Scanner; // imports scanner
+
+public class summative
+{
+  
+  public static void main (String[] args)
+  {
+    new summative ();
+  }
+  
+  
+  public summative ()
+  {
+    // Scanner
+    Scanner scan = new Scanner (System.in);
+    
+    // Title
+    System.out.println ("Powers!\n");
+    
+    // ask user for base
+    System.out.println ("Enter the Base: ");
+    double base = Double.parseDouble (scan.nextLine ()); // store base
+    
+    // ask user for exponent
+    System.out.println ("Enter an integer Exponent : ");
+    int exponent = scan.nextInt(); // store exponent
+    
+    // for loop to calculate and print values
+    double power = 0;
+    for (int i = 0; i <= exponent; i++)
+    {
+      power = Math.pow(base,i);
+      System.out.println (base + " to the exponent " + i + " = "+ power);
+    }
+    
+  }
+  
+}
+  

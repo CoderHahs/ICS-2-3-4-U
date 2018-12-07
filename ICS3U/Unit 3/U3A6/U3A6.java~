@@ -1,0 +1,197 @@
+/*
+ By Hrithik Shah
+ Date: July 22, 2016
+ Title: Unit 3 Assignment 6
+ Purpose: Summative Evaluation
+ */
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.*;
+
+public class U3A6
+{
+  
+  public static void main (String[] args)
+  {
+    U3A6sum ();
+  }
+  
+  public static void U3A6sum ()
+  {
+    // Title
+    System.out.println ("\n\nGrades!\n");
+    
+    // Scanner
+    Scanner scan = new Scanner (System.in);
+    
+    // input
+    int ninput;
+    System.out.println ("Enter the number of grades you would like to enter: ");
+    
+    if (scan.hasNextInt()) // checks to see if input is int or not
+    {
+      ninput = scan.nextInt ();
+    }
+    else
+    {
+      while (!scan.hasNextInt())
+      {
+        // catch error
+        System.out.println("Invalid entry. Please enter only integers.");
+        scan.next();
+      }
+      ninput = scan.nextInt();
+    }
+    
+    // arraylist
+    ArrayList<Integer> grades = new ArrayList <Integer>();
+    
+    for (int i = 0; i < ninput; i++)
+    {
+      System.out.println ("Please enter Grade #"+(i+1)+" (out of 100): ");
+      if (scan.hasNextInt())
+      {
+        String mark = scan.next ();
+        int nmark = Integer.parseInt (mark);
+        while (nmark < 0 || nmark > 100)
+        {
+          System.out.println ("Error try again. Please enter a grade that is out of 100. ");
+          mark = scan.next ();
+          nmark = Integer.parseInt (mark);
+        }
+        grades.add (nmark);
+      }
+      else
+      {
+        while (!scan.hasNextInt() || scan.nextInt () < 0 || scan.nextInt () > 100)
+        {
+          // catch error
+          System.out.println("Invalid entry. Please enter only integers between 0 and 100.");
+          scan.next();
+        }
+        grades.add (scan.nextInt ());
+      }
+    }
+    
+    // Sorting statement
+    Collections.sort (grades);
+    
+    System.out.println ("\nSorted List: ");
+    for(int sortedlist: grades)
+    {
+      System.out.print(sortedlist + " ");
+    } 
+    
+    // Average here
+    double average = classaverage (grades);
+    System.out.println ("\nThe class average is " + average);
+    
+    // Maximum Mark here
+    int maximummark = maximum (grades, ninput);
+    System.out.println ("The maximum mark is "+maximummark);
+    
+    // Minimum Mark here
+    int minimummark = minimum (grades);
+    System.out.println ("The minimum mark is "+minimummark);
+    
+    // Range here
+    int range = maximummark - minimummark;
+    System.out.println ("The range is "+ range);
+    
+    // Levels here
+    int arraylevels [] = levels (grades);
+    char level;
+    for (int i = 0; i < arraylevels.length; i++)
+    {
+      if (i == 0)
+        level = 'R';
+      else if (i == 1)
+        level = '1';
+      else if (i == 2)
+        level = '2';
+      else if (i == 3)
+        level = '3';
+      else
+        level = '4';
+      
+      System.out.println ("The number of students with Level "+level+" are: "+ arraylevels [i]);
+    }
+    
+  }
+  
+  public static double classaverage (ArrayList<Integer> grades)
+  {
+    // variables
+    int sum = 0;
+    int grade;
+    double average;
+    
+    for (int i = 0; i < grades.size (); i++)
+    {
+      grade = grades.get (i);
+      sum += grade; // add grade to sum
+    }
+    
+    average = sum / grades.size (); // divide by number of numbers
+    
+    return average; // return average to main method
+  }
+  
+  public static int maximum (ArrayList<Integer> grades, int inputn)
+  {
+    // variables
+    int max = grades.get (inputn-1);
+    
+    return max; // return statement
+  }
+  
+  public static int minimum (ArrayList<Integer> grades)
+  {
+    // var
+    int min = grades.get (0);
+    
+    return min; // return statement
+  }
+  
+  public static int [] levels (ArrayList<Integer> grades)
+  {
+    // array
+    int studentn [] = new int [5];
+    
+    // var
+    int mark;
+    
+    // counters
+    int rstudent = 0;
+    int dstudent = 0;
+    int cstudent = 0;
+    int bstudent = 0;
+    int astudent = 0;
+    
+    // for loop to change grades to levels
+    for (int i = 0; i < grades.size (); i++)
+    {
+      mark = grades.get (i);
+      if (mark < 50)
+        rstudent++;
+      else if (mark < 60)
+        dstudent++;
+      else if (mark < 70)
+        cstudent++;
+      else if (mark < 80)
+        bstudent++;
+      else
+        astudent++;
+    }
+    
+    studentn[0] = rstudent;
+    studentn[1] = dstudent;
+    studentn[2] = cstudent;
+    studentn[3] = bstudent;
+    studentn[4] = astudent;
+    
+    return studentn;
+  }
+}
+

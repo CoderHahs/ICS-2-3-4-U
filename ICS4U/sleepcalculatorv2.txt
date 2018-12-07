@@ -1,0 +1,139 @@
+/*
+ By Hrithik Shah
+ Date: August 4, 2016
+ Title: Sleep Calculator
+ Purpose: Learn methods such as Date and Calender
+ */
+
+// import all required methods
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+import java.text.ParseException;
+import java.util.GregorianCalendar;
+import java.util.Scanner; // imports scanner
+import java.util.*;
+
+public class sleepcalculatorv2
+{
+  
+  public static void main (String[] args)
+  {
+    new sleepcalculatorv2 ();
+  }
+  
+  
+  public sleepcalculatorv2 ()
+  {
+    // Scanner
+    Scanner scan = new Scanner (System.in);
+    
+    // get input for startdate 
+    System.out.println ("Please enter the start date: Day? ");
+    int sday = scan.nextInt ();
+    System.out.println ("Please enter the start date: Month(#)? ");
+    int smonth = scan.nextInt ();
+    System.out.println ("Please enter the start date: Year? ");
+    int syear = scan.nextInt ();
+    String startdate = "";
+    startdate = Integer.toString(syear) + "/" + Integer.toString(smonth) + "/" + Integer.toString(sday);
+    System.out.println ("The start date is: "+startdate);
+    
+    // gets current date and outputs
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    DateFormat month = new SimpleDateFormat ("MMMMMMMMMMMM");
+    //Date curdate = new Date ();
+    //System.out.println ("Today's date is: "+ df.format(curdate)); 
+    
+    // get input for end date 
+    System.out.println ("Please enter the end date: Day? ");
+    int eday = scan.nextInt ();
+    System.out.println ("Please enter the end date: Month(#)? ");
+    int emonth = scan.nextInt ();
+    System.out.println ("Please enter the end date: Year? ");
+    int eyear = scan.nextInt ();
+    String enddate = "";
+    enddate = Integer.toString(eyear) + "/" + Integer.toString(emonth) + "/" + Integer.toString(eday);
+    System.out.println ("The end date is: "+enddate);
+    
+    // convert startdate String to Date
+    Date date1 = new Date ();
+    try 
+    {
+      date1 = df.parse(startdate);
+    } catch (ParseException e) 
+    {
+      e.printStackTrace();
+    }
+    
+    // convert enddate String to Date
+    Date date2 = new Date ();
+    try 
+    {
+      date2 = df.parse(enddate);
+    } catch (ParseException e) 
+    {
+      e.printStackTrace();
+    }
+    
+    // get number of months between two dates
+    Calendar startCalendar = new GregorianCalendar();
+    startCalendar.setTime(date1);
+    Calendar endCalendar = new GregorianCalendar();
+    endCalendar.setTime(date2);
+    
+    int yearsbetween = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
+    int monthsbetween = yearsbetween * 12 + endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
+    
+    // find months that start on monday and print them.
+    int yearcounter = 0;
+    int dayofweek = 0;
+    for (int i = 1; i <= monthsbetween; i++)
+    {
+      startCalendar.set (Calendar.DAY_OF_MONTH, 1); // get first day of the month
+      dayofweek = startCalendar.get(Calendar.DAY_OF_WEEK); // get the day of the week as an integer
+      if (dayofweek == 2)
+        System.out.println (syear + ": "+ month.format (startCalendar.getTime ())); // print out the year and month is first day is monday
+      
+      smonth++; // go to next month
+      
+      if (smonth == 12) // if month is december, year changes, month goes back to january
+      {
+        startdate = Integer.toString(syear) + "/" + Integer.toString(smonth) + "/" + Integer.toString(sday);
+        
+        try 
+        {
+          date1 = df.parse(startdate);
+        } catch (ParseException e) 
+        {
+          e.printStackTrace();
+        }
+        
+        startCalendar.setTime(date1);
+        // change year
+        syear++;
+        // make month january
+        smonth = 1;
+      }
+      else // else just perform task for any month
+      {
+        startdate = Integer.toString(syear) + "/" + Integer.toString(smonth) + "/" + Integer.toString(sday);
+        
+        try 
+        {
+          date1 = df.parse(startdate);
+        } catch (ParseException e) 
+        {
+          e.printStackTrace();
+        }
+        
+        startCalendar.setTime(date1);
+      }
+    }
+    
+  }
+  
+}
+

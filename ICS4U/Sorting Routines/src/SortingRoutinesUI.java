@@ -1,0 +1,554 @@
+
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Hrithik
+ * 
+ *Algorithms from MathBits and AlgoList
+ */
+public class SortingRoutinesUI extends javax.swing.JFrame {
+  
+  /**
+   * Creates new form SortingRoutinesUI
+   */
+  
+  
+  public SortingRoutinesUI() {
+    initComponents();
+  }
+  // array
+  int num [];
+  int n;
+  public void selectionascending ()
+  {
+    // from Mathbits.com 
+    int i, j, first, temp;  
+    for  (i = num.length - 1; i > 0; i-- )  
+    {
+      first = 0;   //initialize to subscript of first element
+      for(j = 1; j <= i; j++)   //locate smallest element between positions 1 and i.
+      {
+        if( num[ j ] < num[ first ] )         
+          first = j;
+      }
+      temp = num[ first ];   //swap smallest found with element in position i.
+      num[ first ] = num[ i ];
+      num[ i ] = temp; 
+    }      
+  }
+  
+  public void selectiondescending ()
+  {
+    // from MathBits.com
+    int i, j, first, temp;  
+    for  (i = num.length - 1; i > 0; i-- )  
+    {
+      first = 0;   //initialize to subscript of first element
+      for(j = 1; j <= i; j++)   //locate smallest element between positions 1 and i.
+      {
+        if( num[ j ] > num[ first ] )         
+          first = j;
+      }
+      temp = num[ first ];   //swap smallest found with element in position i.
+      num[ first ] = num[ i ];
+      num[ i ] = temp; 
+    }      
+  }
+  
+  public void bubbleascending ()
+  {
+    // from MathBits.com
+    int j;
+    boolean flag = true;   // set flag to true to begin first pass
+    int temp;   //holding variable
+    
+    while ( flag )
+    {
+      flag= false;    //set flag to false awaiting a possible swap
+      for( j=0;  j < num.length -1;  j++ )
+      {
+        if ( num[ j ] < num[j+1] )   // change to > for ascending sort
+        {
+          temp = num[ j ];                //swap elements
+          num[ j ] = num[ j+1 ];
+          num[ j+1 ] = temp;
+          flag = true;              //shows a swap occurred  
+        } 
+      } 
+    } 
+  }
+  
+  public void bubbledescending ()
+  {
+    // from MathBits.com
+    int j;
+    boolean flag = true;   // set flag to true to begin first pass
+    int temp;   //holding variable
+    
+    while ( flag )
+    {
+      flag= false;    //set flag to false awaiting a possible swap
+      for( j=0;  j < num.length -1;  j++ )
+      {
+        if ( num[ j ] > num[j+1] )   // change to > for ascending sort
+        {
+          temp = num[ j ];                //swap elements
+          num[ j ] = num[ j+1 ];
+          num[ j+1 ] = temp;
+          flag = true;              //shows a swap occurred  
+        } 
+      } 
+    } 
+  }
+  
+  public void insertionascending ()
+  {
+    // From algolist.net
+    int i, j, newValue;
+    for (i = 1; i < num.length; i++) {
+      newValue = num[i];
+      j = i;
+      while (j > 0 && num[j - 1] > newValue) {
+        num[j] = num[j - 1];
+        j--;
+      }
+      num[j] = newValue;
+    }
+  }
+  
+  public void insertiondescending ()
+  {
+    int i, j, newValue;
+    for (i = 1; i < num.length; i++) {
+      newValue = num[i];
+      j = i;
+      while (j > 0 && num[j - 1] < newValue) {
+        num[j] = num[j - 1];
+        j--;
+      }
+      num[j] = newValue;
+    }
+  }
+  
+  public int partitionascending(int left, int right)
+  {
+    int i = left, j = right;
+    int tmp;
+    int pivot = num[(left + right) / 2];
+    
+    while (i <= j) {
+      while (num[i] < pivot)
+        i++;
+      while (num[j] > pivot)
+        j--;
+      if (i <= j) {
+        tmp = num[i];
+        num[i] = num[j];
+        num[j] = tmp;
+        i++;
+        j--;
+      }
+    };
+    
+    return i;
+  }
+  
+  public void quickascending(int left, int right) {
+    int index = partitionascending(left, right);
+    if (left < index - 1)
+      quickascending(left, index - 1);
+    if (index < right)
+      quickascending(index, right);
+  }
+  
+  public int partitiondescending(int left, int right)
+  {
+    int i = left, j = right;
+    int tmp;
+    int pivot = num[(left + right) / 2];
+    
+    while (i <= j) {
+      while (num[i] > pivot)
+        i++;
+      while (num[j] < pivot)
+        j--;
+      if (i <= j) {
+        tmp = num[i];
+        num[i] = num[j];
+        num[j] = tmp;
+        i++;
+        j--;
+      }
+    };
+    
+    return i;
+  }
+  
+  public void quickdescending(int left, int right) {
+    int index = partitionascending(left, right);
+    if (left < index - 1)
+      quickascending(left, index - 1);
+    if (index < right)
+      quickascending(index, right);
+  }
+  
+  
+  /**
+   * This method is called from within the constructor to initialize the form.
+   * WARNING: Do NOT modify this code. The content of this method is always
+   * regenerated by the Form Editor.
+   */
+  @SuppressWarnings("unchecked")
+  // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+    
+    lbltitle = new javax.swing.JLabel();
+    lblinfo = new javax.swing.JLabel();
+    lblalgorithm = new javax.swing.JLabel();
+    rbselection = new javax.swing.JRadioButton();
+    rbbubble = new javax.swing.JRadioButton();
+    rbinsertion = new javax.swing.JRadioButton();
+    rbquick = new javax.swing.JRadioButton();
+    lblorder = new javax.swing.JLabel();
+    rbascending = new javax.swing.JRadioButton();
+    rbdescending = new javax.swing.JRadioButton();
+    lblamount = new javax.swing.JLabel();
+    txtamount = new javax.swing.JTextField();
+    btnsortall = new javax.swing.JButton();
+    lbloriginal = new javax.swing.JLabel();
+    lblsorted = new javax.swing.JLabel();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    tasorted = new javax.swing.JTextArea();
+    jScrollPane2 = new javax.swing.JScrollPane();
+    taoriginal = new javax.swing.JTextArea();
+    
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    
+    lbltitle.setText("Sorting Routines");
+    
+    lblinfo.setText("Enter the following information: ");
+    
+    lblalgorithm.setText("Sorting Algorithm");
+    
+    rbselection.setText("Selection");
+    rbselection.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbselectionActionPerformed(evt);
+      }
+    });
+    
+    rbbubble.setText("Bubble");
+    rbbubble.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbbubbleActionPerformed(evt);
+      }
+    });
+    
+    rbinsertion.setText("Insertion");
+    rbinsertion.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbinsertionActionPerformed(evt);
+      }
+    });
+    
+    rbquick.setText("Quick");
+    rbquick.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbquickActionPerformed(evt);
+      }
+    });
+    
+    lblorder.setText("Order");
+    
+    rbascending.setText("Ascending");
+    rbascending.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbascendingActionPerformed(evt);
+      }
+    });
+    
+    rbdescending.setText("Descending");
+    rbdescending.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbdescendingActionPerformed(evt);
+      }
+    });
+    
+    lblamount.setText("Amount of Numbers to Sort:");
+    
+    btnsortall.setText("Sort Numbers");
+    btnsortall.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnsortallActionPerformed(evt);
+      }
+    });
+    
+    lbloriginal.setText("Original Numbers");
+    
+    lblsorted.setText("Sorted Numbers");
+    
+    tasorted.setColumns(20);
+    tasorted.setRows(5);
+    jScrollPane1.setViewportView(tasorted);
+    
+    taoriginal.setColumns(20);
+    taoriginal.setRows(5);
+    jScrollPane2.setViewportView(taoriginal);
+    
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+                              layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                    .addGap(153, 153, 153)
+                                                                    .addComponent(lbltitle))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                    .addGap(28, 28, 28)
+                                                                    .addComponent(lblinfo))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                    .addGap(19, 19, 19)
+                                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                        .addComponent(lblalgorithm)
+                                                                                                        .addComponent(lbloriginal))
+                                                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                .addComponent(rbinsertion)
+                                                                                                                                .addComponent(rbquick)
+                                                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                                        .addComponent(rbselection)
+                                                                                                                                                        .addComponent(rbbubble))
+                                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                                        .addComponent(btnsortall)
+                                                                                                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                                                                                                    .addComponent(rbdescending)
+                                                                                                                                                                    .addGroup(layout.createSequentialGroup()
+                                                                                                                                                                                .addComponent(lblorder)
+                                                                                                                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                                                                                                .addComponent(rbascending)
+                                                                                                                                                                                .addGap(6, 6, 6))))
+                                                                                                                                            .addGap(24, 24, 24))))
+                                                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                                                    .addGap(115, 115, 115)
+                                                                                                                    .addComponent(lblsorted)
+                                                                                                                    .addGap(0, 0, Short.MAX_VALUE))))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                            .addComponent(lblamount)
+                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                            .addComponent(txtamount, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                            .addGap(18, 18, 18)
+                                                                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGap(12, 12, 12))
+                             );
+    layout.setVerticalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                              .addGroup(layout.createSequentialGroup()
+                                          .addContainerGap()
+                                          .addComponent(lbltitle)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(lblinfo)
+                                          .addGap(18, 18, 18)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(lblalgorithm)
+                                                      .addComponent(rbselection)
+                                                      .addComponent(lblorder)
+                                                      .addComponent(rbascending))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(rbbubble)
+                                                      .addComponent(rbdescending))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(rbinsertion)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(rbquick)
+                                          .addGap(18, 18, 18)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(lblamount)
+                                                      .addComponent(txtamount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(btnsortall))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(lbloriginal)
+                                                      .addComponent(lblsorted))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addContainerGap(8, Short.MAX_VALUE))
+                           );
+    
+    pack();
+  }// </editor-fold>                        
+  
+  private void rbselectionActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    // TODO add your handling code here:
+    selection = true;
+    bubble = false;
+    insertion = false;
+    quick = false;
+    
+  }                                           
+  
+  private void rbbubbleActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    // TODO add your handling code here:
+    selection = false;
+    bubble = true;
+    insertion = false;
+    quick = false;
+    
+  }                                        
+  
+  private void rbinsertionActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    // TODO add your handling code here:
+    selection = false;
+    bubble = false;
+    insertion = true;
+    quick = false;
+    
+  }                                           
+  
+  private void rbquickActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    // TODO add your handling code here:
+    selection = false;
+    bubble = false;
+    insertion = false;
+    quick = true;
+  }                                       
+  
+  private void rbascendingActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    // TODO add your handling code here:
+    ascending = true;
+  }                                           
+  
+  private void rbdescendingActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    // TODO add your handling code here:
+    ascending = false;
+  }                                            
+  
+  private void btnsortallActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    // TODO add your handling code here:
+    taoriginal.setText ("");
+    tasorted.setText ("");
+    n = Integer.parseInt (txtamount.getText ());
+    Random rand = new Random ();
+    num = new int [n];
+    int random = 0;
+    for (int i = 0; i < num.length; i++)
+    {
+      random = rand.nextInt (1000-(-1000)+1)+(-1000);
+      num [i] = random;
+      taoriginal.append (num[i]+"\n");
+    }
+    if (selection == true)
+    {
+      if (ascending == true)
+        selectionascending ();
+      else
+        selectiondescending ();
+    }
+    else if (bubble == true)
+    {
+      if (ascending == true)
+        bubbleascending ();
+      else
+        bubbledescending ();
+    }
+    else if (insertion == true)
+    {
+      if (ascending == true)
+        insertionascending ();
+      else
+        insertiondescending ();
+    }
+    else 
+    {
+      if (ascending == true)
+        quickascending (0,n-1);
+      else
+        quickdescending (0,n-1);
+    }
+    for (int i = 0; i < num.length; i++)
+    {
+      tasorted.append (num [i] + "\n");
+    }
+  }                                          
+  
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+     * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+     */
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
+        }
+      }
+    } catch (ClassNotFoundException ex) {
+      java.util.logging.Logger.getLogger(SortingRoutinesUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+      java.util.logging.Logger.getLogger(SortingRoutinesUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+      java.util.logging.Logger.getLogger(SortingRoutinesUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(SortingRoutinesUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+    //</editor-fold>
+    
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        new SortingRoutinesUI().setVisible(true);
+      }
+    });
+  }
+  
+  boolean ascending = false;
+  boolean selection = false;
+  boolean bubble = false;
+  boolean insertion = false;
+  boolean quick = false;
+  // Variables declaration - do not modify                     
+  private javax.swing.JButton btnsortall;
+  private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JScrollPane jScrollPane2;
+  private javax.swing.JLabel lblalgorithm;
+  private javax.swing.JLabel lblamount;
+  private javax.swing.JLabel lblinfo;
+  private javax.swing.JLabel lblorder;
+  private javax.swing.JLabel lbloriginal;
+  private javax.swing.JLabel lblsorted;
+  private javax.swing.JLabel lbltitle;
+  private javax.swing.JRadioButton rbascending;
+  private javax.swing.JRadioButton rbbubble;
+  private javax.swing.JRadioButton rbdescending;
+  private javax.swing.JRadioButton rbinsertion;
+  private javax.swing.JRadioButton rbquick;
+  private javax.swing.JRadioButton rbselection;
+  private javax.swing.JTextArea taoriginal;
+  private javax.swing.JTextArea tasorted;
+  private javax.swing.JTextField txtamount;
+  // End of variables declaration                   
+}

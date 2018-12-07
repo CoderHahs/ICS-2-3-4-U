@@ -1,0 +1,31 @@
+public class Binarypoem
+{
+  public static void main (String args [])
+  {
+    new Binarypoem ();
+  } 
+
+  public Binarypoem () 
+  {
+       System.out.println("I am a Binary Number");
+       System.out.println("I am only found in zeroes and ones.");
+       System.out.println("I wonder if I was ever used in war.");
+       System.out.println("I hear the sound of hardware constantly");
+       System.out.println("I see myself running through the computer.");
+       System.out.println("I want to be as large as possible.");
+       System.out.println("I am a Binary Number.);
+       System.out.println("I pretend that I'm a hexadecimal number.");
+       System.out.println("I feel like a Dewey decimal.");
+       System.out.println("I touch my siblins beside me.");
+       System.out.println("I worry that I might get deleted.");
+       System.out.println("I cry when some of my siblings get deleted.");
+       System.out.println("I am a Binary Number.");
+       System.out.println("I understand how storage works.");
+       System.out.println("I say that zeroes are really important.");
+       System.out.println("I dream that I one day consist of many zeroes.");
+       System.out.println("I try to keep all the ones and zeroes in the right order.");
+       System.out.println("I hope that one day I will be a famous number like Pi.");
+       System.out.println("I am a Binary Number.");
+ 
+  }
+}

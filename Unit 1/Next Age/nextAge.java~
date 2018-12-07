@@ -1,0 +1,16 @@
+public class nextAge
+{
+  public static void main (String args [])
+  {
+    new nextAge ();
+  } 
+
+  public nextAge () 
+  {
+     int first = 0 < first < 50;
+     int second = first < second < 50;
+     
+      
+ 
+  }
+}

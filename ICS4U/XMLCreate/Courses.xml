@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<Courses>
+<course>
+	<code>ICS4C</code>
+	<description> Computer Programming, Grade 12, College</description>
+	<teacher>Irina Ivanova</teacher>
+        <schoolBoard>TDSB</schoolBoard>
+	<fileType>Unmodified</fileType>
+</course>
+<course>
+	<code>ENG4U</code>
+	<description>English Grade 12</description>
+	<teacher>Ms. Cave-William</teacher>
+         <schoolBoard>PeelSB</schoolBoard>
+	<fileType>Unmodified</fileType>
+</course>
+<course>
+	<code>MCV4U</code>
+	<description>Math Grade 12 - Calculus and Vectors</description>
+	<teacher>Mr. Zawdeh</teacher>
+         <schoolBoard>PeelSB</schoolBoard>
+	<fileType>Unmodified</fileType>
+</course>
+</Courses>

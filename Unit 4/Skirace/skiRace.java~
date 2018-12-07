@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.Applet;
+public class skiRace extends Applet implements ActionListener
+{
+    public void init ()
+    {
+	JLabel title = new JLabel ("Ski Race Puzzle!");
+	title.setFont ("Arial", Font.BOLD, 20);
+	JLabel pic1 = new JLabel (createImageIcon ("SkiRace.jpg"));
+	JLabel i = new JLabel ("Enter the number of points beside each skier.");
+	
+	add (title);
+	add (pic1);
+    }
+
+
+    public void actionPerformed (ActionEvent e)
+    {
+    }
+
+
+    protected static ImageIcon createImageIcon (String path)
+    {
+	java.net.URL imgURL = skiRace.class.getResource (path);
+	if (imgURL != null)
+	{
+	    return new ImageIcon (imgURL);
+	}
+	else
+	{
+	    System.err.println ("Couldn't find file: " + path);
+	    return null;
+	}
+    }
+}

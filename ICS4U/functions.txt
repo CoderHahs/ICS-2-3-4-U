@@ -1,0 +1,118 @@
+/*
+ By Hrithik Shah
+ Date: August 4, 2016
+ Title: Functions
+ Purpose: practise functions
+ */
+
+/* 
+ * I chose to build functions:
+ * Finds the largest item in array (easy)
+ * Counts the number of digits in a number (easy)
+ * Checks if an array is sorted (easy)
+ */
+
+import java.util.Scanner;
+
+
+public class functions
+{
+  // Scanner that scans system for errors
+    Scanner scan = new Scanner(System.in);
+    
+    // Array for greatest number method
+    int [] numbers = {0,3,7,2,100,4,2,52,44,55,22,73,99,24,73,45,85,34};
+    
+    // Array to be sorted
+    int [] tosort = {3,1,4,7,3,5,8,1,4,8,4,7};
+   
+    // Array sorted
+    int [] sorted = {0,1,2,3,4,5,6,7,8,9};
+    
+  public static void main (String[] args)
+  {
+    new functions ();
+  }
+  
+  
+  public functions ()
+  {
+    digitsinanumber ();
+    greatestnumber ();
+    checkarraysorted ();
+  }
+  
+  public void digitsinanumber ()
+  {
+   // Title
+    System.out.println ("Digits in a Number\n");
+    
+   // input
+    System.out.println ("Enter an integer: ");
+    int int1 = scan.nextInt ();
+     
+    // save integer for final statement
+    int integer = int1;
+    
+    // find number of digits
+    int ndigits = String.valueOf(int1).length();
+    
+    // loop to separate digits and find sum of digits
+    int sum = 0;
+    int toadd = 0;
+    
+    // final statement
+    System.out.println (integer + " was the inputted integer. \nThe number of digits in this integer is "+ndigits); 
+  }
+  
+  public void greatestnumber ()
+  {
+    // Title
+    System.out.println ("\nGreatest Number\n");
+    
+    int max = 0;
+    for (int i = 0; i < numbers.length; i++)
+    {
+      if (max < numbers [i]) // if previous number is smaller than next number
+        max = numbers [i]; // maximum is now next number
+    }
+    
+    // output
+      System.out.println ("The largest number in the array is "+max);
+  }
+  
+  public void checkarraysorted ()
+  {
+    // Title
+    System.out.println ("\nIs the Array Sorted?\n");
+    
+    // check if tosort (array) is sorted
+    boolean issorted = false;
+     for (int i = 1; i < (tosort.length); i++)
+     {
+       if (tosort [i-1] < tosort [i])
+         issorted = true;
+       else
+       {
+         issorted = false;
+         break;
+       }
+     }
+     System.out.println ("Array sorted: "+issorted);
+     
+     
+     // check if sorted (array) is sorted
+     for (int i = 1; i < (sorted.length); i++)
+     {
+       if (sorted [i-1] < sorted [i])
+         issorted = true;
+       else
+       {
+         issorted = false;
+         break;
+       }
+     }
+     System.out.println ("Array sorted: "+issorted);
+  }
+  
+}

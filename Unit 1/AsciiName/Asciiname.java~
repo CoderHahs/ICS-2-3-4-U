@@ -1,0 +1,33 @@
+public class name Asciiname
+{
+  public static void main (String args[])
+ {
+    Asciiname ();
+ }
+  public Asciiname ()
+  {
+   System.out.println(" 88        88            88         88          88 88  ");       
+    System.out.println("88        88            ""   ,d    88          "" 88   ");      
+    System.out.println("88        88                 88    88             88   ");      
+    System.out.println("88aaaaaaaa88 8b,dPPYba, 88 MM88MMM 88,dPPYba,  88 88   ,d8 ");  
+    System.out.println("88""""""""88 88P'   "Y8 88   88    88P'    "8a 88 88 ,a8" ");   
+    System.out.println("88        88 88         88   88    88       88 88 8888[    ");  
+    System.out.println("88        88 88         88   88,   88       88 88 88`"Yba,  "); 
+    System.out.println("88        88 88         88   "Y888 88       88 88 88   `Y8a  ");
+                                                             
+                                                             
+                                                
+     System.out.println("ad88888ba  88                     88     ");      
+    System.out.println("d8"     "8b 88                     88        ");   
+    System.out.println("Y8,         88                     88          "); 
+    System.out.println("`Y8aaaaa,   88,dPPYba,  ,adPPYYba, 88,dPPYba,  "); 
+    System.out.println("  `"""""8b, 88P'    "8a ""     `Y8 88P'    "8a  ");
+    System.out.println("        `8b 88       88 ,adPPPPP88 88       88  ");
+    System.out.println("Y8a     a8P 88       88 88,    ,88 88       88  ");
+    System.out.println(" "Y88888P"  88       88 `"8bbdP"Y8 88       88  "); 
+  }
+  
+  
+  
+  
+}
